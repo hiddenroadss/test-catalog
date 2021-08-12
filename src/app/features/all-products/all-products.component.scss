@@ -1,0 +1,14 @@
+.products {
+  &__list {
+    padding: 20px 0;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    min-width: 300px;
+    max-width: 400px;
+    margin-right: 10px;
+  }
+}

@@ -1,0 +1,70 @@
+<div class="container">
+  <a [routerLink]="['/']"><span>&#8592;</span>Back to product catalog</a>
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>{{ product.title | titlecase }}</mat-card-title>
+    </mat-card-header>
+
+    <img
+      mat-card-image
+      src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+      alt="Photo of a Shiba Inu"
+    />
+    <mat-card-content>
+      <p>{{ product.text }}</p>
+    </mat-card-content>
+  </mat-card>
+  <div style="text-align: center; margin-top: 20px">
+    <h3>Review</h3>
+    <button
+      mat-raised-button
+      color="accent"
+      *ngIf="!showForm"
+      (click)="showForm = !showForm"
+    >
+      Write a review
+    </button>
+  </div>
+  <form
+    *ngIf="(isAuthenticated$ | async) && showForm; else err"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+    style="display: flex; flex-direction: column; align-items: center"
+  >
+    <mat-form-field>
+      <mat-label>Write a review</mat-label>
+      <textarea matInput formControlName="review"></textarea>
+    </mat-form-field>
+    <app-rate-input formControlName="stars"></app-rate-input>
+    <button mat-raised-button color="accent" [disabled]="form.invalid">
+      Submit
+    </button>
+  </form>
+  <ng-template #err>
+    <p *ngIf="showForm" style="text-align: center; color: red">
+      You need to login to leave a review
+    </p>
+  </ng-template>
+
+  <mat-tab-group>
+    <mat-tab label="Reviews">
+      <div class="reviews">
+        <div class="review__container" *ngFor="let comment of comments">
+          <mat-icon
+            #icon
+            [color]="star <= comment.rate ? 'primary' : undefined"
+            *ngFor="let star of stars"
+            >grade</mat-icon
+          >
+          <h4>
+            {{ comment.created_by.username | titlecase }} |
+            {{ comment.created_at | date }}
+          </h4>
+          <p>{{ comment.text }}</p>
+          <mat-divider></mat-divider>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab disabled label="Questions"></mat-tab>
+  </mat-tab-group>
+</div>

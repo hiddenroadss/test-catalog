@@ -1,0 +1,18 @@
+<div class="container products__list">
+  <mat-card class="products__item" *ngFor="let product of products$ | async">
+    <mat-card-title>{{ product.title | titlecase }}</mat-card-title>
+    <img
+      src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+      [alt]="product.title"
+      mat-card-image
+    />
+    <mat-card-content>
+      {{ product.text }}
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="primary" (click)="openProductDetails(product)">
+        View
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

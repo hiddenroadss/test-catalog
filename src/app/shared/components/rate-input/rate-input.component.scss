@@ -1,0 +1,6 @@
+:host {
+  cursor: pointer;
+  &.disabled-rating {
+    opacity: 0.5;
+  }
+}

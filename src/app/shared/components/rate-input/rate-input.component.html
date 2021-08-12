@@ -1,0 +1,9 @@
+<ng-container *ngFor="let star of stars">
+  <mat-icon
+    #icon
+    (click)="setValue(star)"
+    [color]="star <= value ? 'primary' : undefined"
+    [ngClass]="disabled ? 'disabled-rating' : ''"
+    >grade</mat-icon
+  >
+</ng-container>

@@ -1,0 +1,38 @@
+<div class="login__container">
+  <h2 class="login__title">Login</h2>
+  <mat-divider></mat-divider>
+  <form (ngSubmit)="onSubmit()" #loginForm="ngForm" class="login__form">
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input
+        matInput
+        name="username"
+        [(ngModel)]="username"
+        autocomplete="off"
+        #userControl="ngModel"
+        required
+      />
+      <mat-hint [hidden]="userControl.valid || !userControl.touched"
+        >Field is required</mat-hint
+      >
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        name="password"
+        type="password"
+        [(ngModel)]="password"
+        #passwordControl="ngModel"
+        required
+      />
+      <mat-hint [hidden]="passwordControl.valid || !passwordControl.touched"
+        >Field is required</mat-hint
+      >
+    </mat-form-field>
+    <button mat-raised-button color="accent" [disabled]="loginForm.invalid">
+      Login
+    </button>
+    <a [routerLink]="['/auth/register']">Do not have account yet? Sign Up</a>
+  </form>
+</div>

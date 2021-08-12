@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+  <div class="container nav">
+    <ng-container *ngIf="isAuthenticated$ | async; else anonymousUser">
+      <div (click)="logOut()">Logout</div>
+    </ng-container>
+    <ng-template #anonymousUser>
+      <a [routerLink]="['/auth/login']">Login</a>
+      <a [routerLink]="['/auth/register']">Register</a>
+    </ng-template>
+  </div>
+</mat-toolbar>

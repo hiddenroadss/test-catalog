@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  margin: 20px 0;
+}
+.review {
+  &__container {
+    padding: 20px 0 0 0;
+  }
+}
+.card {
+  max-width: 600px;
+  margin: 0 auto;
+}

@@ -4,8 +4,11 @@
   "compilerOptions": {
     "paths": {
       "@services/*": ["src/app/shared/services/*"],
-      "@interfaces/*": ["src/app/shared/interfaces/*"]
+      "@interfaces/*": ["src/app/shared/interfaces/*"],
+      "@core/*": ["src/app/core/*"],
+      "@components/*": ["src/app/shared/components/*"]
     },
+    "noUnusedLocals": true,
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
